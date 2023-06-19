@@ -66,6 +66,8 @@ plt.plot(range(1,61),mean_error_rate,color='blue', linestyle='dashed', marker='o
 plt.title('Error rate vs. number of neighbors K in KNN')
 plt.xlabel('Number of neighbors K')
 plt.ylabel('Error rate')
+plt.axvline(41, color='red')  
+plt.savefig("knn_elbow_plot.png")
 
 # Choose optimal k according to the elbow plot
 optimal_k = 41
