@@ -63,30 +63,28 @@ if pvalue < alpha:
 else:
     normal["Survival_from_surgery_days"] = pvalue
     print(f"The label is normally distributed.")
-    
-    
-### Age distribution and gender ####################################################################################
-
-age = sns.histplot(df_full, x = 'Age_at_scan_years', binwidth=5, binrange=(15,95),hue='Gender')
-label_axes = age.set(xticks= np.arange(15, 100, 5), xlabel='Age [years]', ylabel='Number of Patiens', title= 'Age distribution') 
-plt.legend(title='Gender', loc='upper left', labels=['Male', 'Female'])
-plt.savefig("../output/age_distribution.png")
 
 
 ### Survival rate as a function of age and gender ####################################################################################
-fig, axes = plt.subplots(1, 2, figsize=(12,6))
+fig, axes = plt.subplots(1, 3, figsize=(12,4))
+
+# Plot the age distirbution separated by gender
+age = sns.histplot(df_full, x = 'Age_at_scan_years', binwidth=5, binrange=(15,95),hue='Gender', ax=axes[0])
+label_axes = age.set(xticks= np.arange(20, 100, 10), xlabel='Age [years]', ylabel='Number of Patiens', title= 'Age distribution') 
+axes[0].legend(title='Gender', loc='upper left', labels=['Male', 'Female'])
 
 # Plot the age distirbution separated by outcome
-fig_age = sns.histplot(df_full, x = 'Age_at_scan_years', binwidth=5, binrange=(15,95), hue='OS_>_1_year', ax=axes[0])
-label_axes = fig_age.set(xticks= np.arange(15, 100, 5), xlabel='Age [years]', ylabel='Number of Patiens', title= 'Age distribution by overall survival') 
-axes[0].legend(title='Overall Survival (OS)', labels=['> 1 year', '< 1 year'])
-
-# Plot the age dispersion separated by gender
-fig_age_range = sns.boxplot(data=df_full, x='Age_at_scan_years', y='Gender', hue="OS_>_1_year",  ax=axes[1], width=0.4)
-fig_age_range = fig_age_range.set(xticks= np.arange(15, 105, 5), xlabel='Age [years]', ylabel=' ', title= 'Age range split by gender and overall survival')  
-axes[1].set_yticklabels(['Female','Male'])
+fig_age = sns.histplot(df_full, x = 'Age_at_scan_years', binwidth=5, binrange=(15,95), hue='OS_>_1_year', ax=axes[1])
+label_axes = fig_age.set(xticks= np.arange(20, 100, 10), xlabel='Age [years]', ylabel='Number of Patiens', title= 'Age distribution by overall survival') 
 axes[1].legend(title='Overall Survival (OS)', labels=['> 1 year', '< 1 year'])
 
+# Plot the age dispersion separated by gender
+fig_age_range = sns.boxplot(data=df_full, x='Age_at_scan_years', y='Gender', hue="OS_>_1_year",  ax=axes[2], width=0.4)
+fig_age_range = fig_age_range.set(xticks= np.arange(20, 100, 10), xlabel='Age [years]', ylabel=' ', title= 'Age range split by gender and overall survival')  
+axes[2].set_yticklabels(['Female','Male'])
+axes[2].legend(title='Overall Survival (OS)', labels=['> 1 year', '< 1 year'])
+
+plt.tight_layout()
 plt.savefig("../output/age_distribution_outcome.png")
 
 
