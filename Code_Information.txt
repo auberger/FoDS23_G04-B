@@ -1,0 +1,53 @@
+Content of this file:
+1. Suggested directory structure 
+2. Code execution order and approximate time
+3. Used packages (with version)
+
+
+1. Please consider the following directory structure in order to ensure an error-free execution of the code:  
+.
+├── code
+│   ├── A_preprocessing.py
+│   ├── B_Data_Exploration.py
+│   ├── C_Splitting_filter_FS.py
+│   ├── D_Evaluation_function.py
+│   ├── E_Wrapper_FS.py
+│   ├── F_Hyperparameter_Tuning_KNN.py
+│   └── G_Hyperparameter_Tuning_Evaluation.py
+│
+├── data
+│   ├── clinFeatures_UPENN.csv
+│   ├── radFeatures_UPENN.csv
+│   └── UPENN-GBM_CaPTk_fe_params.csv
+│
+└── output
+
+
+2. The seven .py files in the "code" folder should be executed in the following order (approximate execution times for each file are given as well): 
+
+- A_preprocessing.py (< 1 min)
+- B_Data_Exploration.py (< 1 min)
+- C_Splitting_filter_FS.py (~ 4 min)
+- D_Evaluation_function.py (< 1 min)
+- E_Wrapper_FS.py (~ 25 min)
+- F_Hyperparameter_Tuning_KNN.py (~ 2 min)
+- G_Hyperparameter_Tuning_Evaluation.py (< 1 min)
+
+Note: If the execution time of the file "E_Wrapper_FS.py" should exeed your capacities, it is possible to increase the step size (last number of line 33) from 1 to 10 for example. This way, just the best 10, 20, 30, ..., 320, 330 features are getting tested for every classifier. This reduces the execution time approximately by a factor of 10.
+
+
+3. The following list represent all packages used in this project:
+
+Package                 Version
+----------------------- ---------
+kaleido                 0.2.1
+matplotlib              3.7.0
+matplotlib-inline       0.1.2
+missingno               0.5.2
+numpy                   1.24.2
+pandas                  1.5.3
+plotly                  5.13.1
+scikit-learn            1.2.2
+scipy                   1.10.1
+seaborn                 0.12.2
+sklearn                 0.0.post1
