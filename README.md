@@ -1,3 +1,3 @@
 # README
 
-For detailed information, please refer to the [README.pdf](README.pdf) file.
+For detailed information, please refer to the [ML_for_survival_prediction_in_glioblastoma.pdf](ML_for_survival_prediction_in_glioblastoma.pdf) file.
